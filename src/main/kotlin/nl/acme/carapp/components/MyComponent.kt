@@ -1,4 +1,4 @@
-package nl.acme.carapp
+package nl.acme.carapp.components
 
 import org.springframework.stereotype.Component
 

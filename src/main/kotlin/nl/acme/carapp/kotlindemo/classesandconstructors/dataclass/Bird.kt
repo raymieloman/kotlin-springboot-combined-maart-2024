@@ -1,5 +1,7 @@
 package nl.acme.carapp.kotlindemo.classesandconstructors.dataclass
 
+import nl.acme.carapp.utils.Assert.Companion.assertEquals
+
 open class Animal
 
 data class Bird(var name: String, val age: Int): Animal()
@@ -24,22 +26,23 @@ fun main() {
     println(myage)
 
     val p = Pair(1, "Raymond")
+    assertEquals(1, p.first)
+    assertEquals("Raymond", p.second)
 
     bird.name = " value ";
 
     // copy
     val bird3 = bird.copy() // full copy
+    assertEquals(3, bird3.age)
     val bird4 = bird.copy(age = 45) // partial copy
+    assertEquals(45, bird4.age)
 
 
 
     // data classes zijn dus eigenlijk vooral bedoeld als data class
     // dus geen utility class of een class waarvan je kunt erven.
 
-    assert(bird.name == "Poedel")
-
-
     bird.name = "Raaf"
-//    bird.age++;
+//    bird.age++; // faalt want age is hier een val(ue)
 }
 
