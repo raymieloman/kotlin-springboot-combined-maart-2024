@@ -27,9 +27,17 @@ fun main() {
 
     bird.name = " value ";
 
+    // copy
+    val bird3 = bird.copy() // full copy
+    val bird4 = bird.copy(age = 45) // partial copy
+
+
 
     // data classes zijn dus eigenlijk vooral bedoeld als data class
     // dus geen utility class of een class waarvan je kunt erven.
+
+    assert(bird.name == "Poedel")
+
 
     bird.name = "Raaf"
 //    bird.age++;
