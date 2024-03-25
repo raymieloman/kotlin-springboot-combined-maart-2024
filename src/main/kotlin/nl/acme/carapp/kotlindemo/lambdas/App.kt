@@ -1,5 +1,6 @@
 package nl.acme.carapp.kotlindemo.lambdas
 
+
 fun main() {
     val lambda: (String) -> Unit = { it -> println(it) }
     doSomeAndReturnNothing(lambda)
@@ -21,5 +22,12 @@ fun doSomeAndReturnNothing(lambda: (String) -> Unit) { // syntax: (parameterList
 }
 
 fun doSomeAndReturnSome(lambda: (List<Int>) -> String): String {
+    return lambda(listOf(7, 8, 9))
+}
+
+
+// using typealias
+typealias DoSomeAndReturnSome = (List<Int>) -> String
+fun doSomeAndReturnSomeDemoTypeAlias(lambda: DoSomeAndReturnSome): String {
     return lambda(listOf(7, 8, 9))
 }
