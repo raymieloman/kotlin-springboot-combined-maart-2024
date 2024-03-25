@@ -1,0 +1,17 @@
+version: '3'
+services:
+  mysql:
+    image: mysql/mysql-server:8.0.28
+    container_name: carDb
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysecretPassword2022!
+      - MYSQL_DATABASE=carDb
+      - MYSQL_USER=caruser
+      - MYSQL_PASSWORD=carpass
+    volumes:
+      - mysql01:/var/lib/mysql
+    ports:
+      - 3306:3306
+volumes:
+  mysql01: {}
+# To drop volume invoke: docker-compose down --volumes
