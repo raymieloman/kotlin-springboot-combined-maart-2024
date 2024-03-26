@@ -17,7 +17,7 @@ We fix the ambiguous bean issue by choosing between two options
 2. Using the @Primary annotation when defining the bean
 
 Adddional:
-to show that the beanName can be different than the method name, see bean with name johnEmployee in EmployeeBeans
+to show that the beanName can be different than the method name, see bean with name johnEmployee in EmployeeBeans and see the @Qualifier hier!
  */
 
 @Service
