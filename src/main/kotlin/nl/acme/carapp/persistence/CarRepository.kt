@@ -18,7 +18,7 @@ fun findParents(id: Long, relations: Set<Relationship>,
     @Query("select c from Car c where c.mileage = :mileage")
     fun findByMileageCustomQuery(mileage: Double) : List<Car>
 
-    @Query(value="select * from car c where c.mileage = :mileage", nativeQuery = true)
+    @Query(value="select * from Car c where c.mileage = :mileage", nativeQuery = true)
     fun findByMileageCustomQueryNative(mileage: Double) : List<Car>
 }
 
