@@ -1,4 +1,4 @@
-package nl.acme.carapp.scopefunctionsdemo
+package nl.acme.carapp.kotlindemo.scopefunctionsdemo
 
 import nl.acme.carapp.utils.Assert.Companion.assertEquals
 import kotlin.math.sqrt
