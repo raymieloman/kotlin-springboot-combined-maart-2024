@@ -1,4 +1,4 @@
-package nl.acme.carapp.kotlindemo.lambdas
+package nl.acme.kotlindemo.lambdas
 
 
 fun main() {

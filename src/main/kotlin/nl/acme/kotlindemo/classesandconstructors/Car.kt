@@ -1,4 +1,4 @@
-package nl.acme.carapp.kotlindemo.classesandconstructors
+package nl.acme.kotlindemo.classesandconstructors
 
 open class Car(val licensePlate: String) {
 

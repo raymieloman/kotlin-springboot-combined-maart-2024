@@ -1,4 +1,4 @@
-package nl.acme.carapp.kotlindemo.collections
+package nl.acme.kotlindemo.collections
 
 
 fun main() {

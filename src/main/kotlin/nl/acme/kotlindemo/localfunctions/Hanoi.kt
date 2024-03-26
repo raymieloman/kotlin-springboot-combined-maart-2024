@@ -1,4 +1,4 @@
-package nl.acme.carapp.kotlindemo.localfunctions
+package nl.acme.kotlindemo.localfunctions
 
 fun main() {
     hanoi(3)

@@ -1,4 +1,4 @@
-package nl.acme.carapp.kotlindemo.classesandconstructors.dataclass
+package nl.acme.kotlindemo.classesandconstructors.dataclass
 
 import nl.acme.carapp.utils.Assert.Companion.assertEquals
 

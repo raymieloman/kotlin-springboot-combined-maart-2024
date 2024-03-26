@@ -1,4 +1,4 @@
-package nl.acme.carapp.kotlindemo.extensionfunctions
+package nl.acme.kotlindemo.extensionfunctions
 
 import nl.acme.carapp.utils.countVowels
 
