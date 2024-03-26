@@ -2,9 +2,11 @@ package nl.acme.carapp
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.ActiveProfiles
 
 @SpringBootTest
-class CarappApplicationTests {
+@ActiveProfiles("integrationtest")
+class CarappApplicationIT {
 
 	@Test
 	fun contextLoads() {
