@@ -50,7 +50,7 @@ class WebClientController {
             .build()
 
         val uriSpec: WebClient.UriSpec<WebClient.RequestBodySpec> = client.post()
-        val bodySpec: WebClient.RequestBodySpec = uriSpec.uri("/resource") // cat facts?
+        val bodySpec: WebClient.RequestBodySpec = uriSpec.uri("/api/cars") // cat facts?
 
         val headersSpec: WebClient.RequestHeadersSpec<*> = bodySpec.bodyValue("data")
 
@@ -65,6 +65,9 @@ class WebClientController {
 
         val response = headersSpec.retrieve()
             .bodyToMono(String::class.java)
+        println(response)
+
+
     }
 
 }
