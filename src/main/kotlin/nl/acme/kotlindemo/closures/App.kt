@@ -1,4 +1,4 @@
-package nl.acme.carapp.kotlindemo.closures
+package nl.acme.kotlindemo.closures
 
 import nl.acme.carapp.utils.Assert.Companion.assertEquals
 

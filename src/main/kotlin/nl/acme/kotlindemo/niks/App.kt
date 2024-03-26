@@ -1,4 +1,4 @@
-package nl.acme.carapp.kotlindemo.niks
+package nl.acme.kotlindemo.niks
 
 fun main() {
     nothing();

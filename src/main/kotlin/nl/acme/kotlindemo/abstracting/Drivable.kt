@@ -1,4 +1,4 @@
-package nl.acme.carapp.kotlindemo.abstracting
+package nl.acme.kotlindemo.abstracting
 
 interface Drivable {
     fun drive(): Int
@@ -13,7 +13,7 @@ interface Driver {
 
 }
 
-class Car: Vehicle(), Driver  {
+class Car: Vehicle(), Driver {
 
     var mileage = 0
 
