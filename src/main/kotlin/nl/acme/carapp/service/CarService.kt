@@ -9,12 +9,7 @@ import kotlin.jvm.optionals.getOrNull
 
 
 @Service
-class CarService(val repository: CarRepository, bmw: Car, jan: CarOwner) {
-
-    init {
-        this.repository.save(bmw)
-        println("Car breated ${bmw} for owner: ${jan}")
-    }
+class CarService(val repository: CarRepository) {
 
     fun getAllCars(): List<Car> {
         return this.repository.findAll()
