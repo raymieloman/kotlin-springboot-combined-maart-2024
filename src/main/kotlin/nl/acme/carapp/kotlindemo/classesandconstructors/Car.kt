@@ -2,6 +2,8 @@ package nl.acme.carapp.kotlindemo.classesandconstructors
 
 open class Car(val licensePlate: String) {
 
+
+
     // strange, funny but not advisable :-)
     var field = 0.0
         get()  = field
