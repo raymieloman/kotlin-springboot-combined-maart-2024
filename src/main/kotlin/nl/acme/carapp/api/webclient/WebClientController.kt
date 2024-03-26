@@ -50,7 +50,7 @@ class WebClientController {
             .build()
 
         val uriSpec: WebClient.UriSpec<WebClient.RequestBodySpec> = client.post()
-        val bodySpec: WebClient.RequestBodySpec = uriSpec.uri("/api/cars") // cat facts?
+        val bodySpec: WebClient.RequestBodySpec = uriSpec.uri("https://jsonplaceholder.typicode.com/posts") // cat facts?
 
         val headersSpec: WebClient.RequestHeadersSpec<*> = bodySpec.bodyValue("data")
 
