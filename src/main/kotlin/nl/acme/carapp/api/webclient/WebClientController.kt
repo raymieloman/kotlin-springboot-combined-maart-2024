@@ -3,13 +3,18 @@ package nl.acme.carapp.api.webclient
 import io.netty.channel.ChannelOption
 import io.netty.handler.timeout.ReadTimeoutHandler
 import io.netty.handler.timeout.WriteTimeoutHandler
+import nl.acme.carapp.model.Car
 import org.springframework.http.HttpHeaders
+import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.client.reactive.ReactorClientHttpConnector
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.reactive.function.client.ClientResponse
 import org.springframework.web.reactive.function.client.WebClient
+import org.springframework.web.reactive.function.client.WebClientResponseException
+import reactor.core.publisher.Mono
 import reactor.netty.http.client.HttpClient
 import java.nio.charset.StandardCharsets
 import java.time.Duration
@@ -50,9 +55,14 @@ class WebClientController {
             .build()
 
         val uriSpec: WebClient.UriSpec<WebClient.RequestBodySpec> = client.post()
-        val bodySpec: WebClient.RequestBodySpec = uriSpec.uri("https://jsonplaceholder.typicode.com/posts") // cat facts?
+        val bodySpec: WebClient.RequestBodySpec = uriSpec.uri("http://localhost:8080/api/cars") // cat facts?
 
-        val headersSpec: WebClient.RequestHeadersSpec<*> = bodySpec.bodyValue("data")
+        val car = Car()
+        car.mileage = 45.0
+        car.licensePlate = "AABBCC"
+
+
+        val headersSpec: WebClient.RequestHeadersSpec<*> = bodySpec.bodyValue(car)
 
         val responseSpec: WebClient.ResponseSpec = headersSpec.header(
             HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE
@@ -63,9 +73,26 @@ class WebClientController {
             .ifModifiedSince(ZonedDateTime.now())
             .retrieve()
 
-        val response = headersSpec.retrieve()
-            .bodyToMono(String::class.java)
+//        val response = headersSpec.retrieve().bodyToMono(String::class.java)
+//        println(response)
+
+        // or
+        val response = headersSpec.exchangeToMono { response: ClientResponse ->
+            if (response.statusCode() == HttpStatus.OK) {
+                return@exchangeToMono response.bodyToMono<String>(String::class.java)
+            } else if (response.statusCode().is4xxClientError) {
+                return@exchangeToMono Mono.just<String>("Error response")
+            } else {
+                return@exchangeToMono response.createException()
+                    .flatMap<String> { error: WebClientResponseException? ->
+                        Mono.error(
+                            error!!
+                        )
+                    }
+            }
+        }
         println(response)
+        println(responseSpec.bodyToMono(String::class.java))
 
 
     }
