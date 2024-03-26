@@ -25,4 +25,6 @@ class CarService(val repository: CarRepository, bmw: Car, jan: CarOwner) {
 
 
     fun findById(id: Long): Car? = this.repository.findById(id).getOrNull()
+
+    fun findByMileage(mileage: Double) = this.repository.findByMileageCustomQueryNative(mileage)
 }

@@ -42,4 +42,7 @@ class CarController(val service: CarService) {
 
         }
     }
+
+    @GetMapping("mileage/{mileage}")
+    fun findByMileage(@PathVariable mileage: Double) = this.service.findByMileage(mileage)
 }

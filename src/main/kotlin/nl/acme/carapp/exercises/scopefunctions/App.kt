@@ -22,10 +22,8 @@ fun main() {
     }
 
     if(emailOK == null || !emailOK) {
-        user.email ="info@example.com"
+        user.email = "info@example.com"
     } else {
         // aha, je moet hier een else branch opnemen als je .also wilt gebruiken. 't Is maar dat u het weet!
     }.also { println(user.name) }
-
-
 }
