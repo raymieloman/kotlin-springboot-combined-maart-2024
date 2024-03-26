@@ -15,7 +15,7 @@ class CarServiceTest {
     val carRepository: CarRepository = mockk();
     val carService = CarService(carRepository);
 
-    lateinit var car: Car;
+    var car: Car;
 
     init {
         this.car = Car();
