@@ -1,4 +1,4 @@
-package nl.acme.carapp
+package nl.acme.carapp.integrationtests
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
