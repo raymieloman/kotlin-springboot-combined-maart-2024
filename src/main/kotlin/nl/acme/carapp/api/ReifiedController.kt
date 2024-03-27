@@ -17,7 +17,7 @@ class ReifiedController(private val service: CarService) {
 
     @PostMapping
     fun reifiedDemo(@RequestBody car: AbstractCar): AbstractCar {
-        var myCar = determineType(car)
+        var myCar = determineType<AbstractCar>(car)
         return car;
 //        return this.service.createCar(myCar as)
     }
@@ -25,9 +25,16 @@ class ReifiedController(private val service: CarService) {
     /**
      * Again, reified is just a stronger version than Java regarding type erasure
      * now, we can see ans ask for which type it is, that is impossible in Java
+     * And you do not have supply the classType in het method signature
      */
-    private inline fun <reified T> determineType(t: T): T {
-        println("The posted type is: ${t!!::class.java}")
+    private inline fun <reified  T> determineType(obj: Any): Any {
+        if (obj is T) {
+            println("Object is of type ${T::class.simpleName}")
+        } else {
+            println("Object is not of type ${T::class.simpleName}")
+        }
+        /*
+        old
         when (t) {
             is Car -> {
                 println("The posted type is: Car")
@@ -43,5 +50,7 @@ class ReifiedController(private val service: CarService) {
                 throw IllegalArgumentException();
             }
         }
+        */
+        return obj
     }
 }
