@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Primary
 
 data class Employee(val name: String)
 
-
 @Configuration
 class EmployeeBeans {
 
