@@ -11,5 +11,4 @@ class CarappApplicationIT {
 	@Test
 	fun contextLoads() {
 	}
-
 }

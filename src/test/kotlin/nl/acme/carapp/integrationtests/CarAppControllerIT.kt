@@ -12,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.http.HttpStatus
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.ActiveProfiles
 
 @ActiveProfiles("integrationtest")
@@ -54,7 +53,6 @@ class CarAppControllerIT {
         val result = testRestTemplate.postForEntity(baseApi, car, Car::class.java);
         id = result.body?.id!!
 
-
         // Then
         assertNotNull(result)
         assertEquals(HttpStatus.CREATED, result?.statusCode)
@@ -63,8 +61,10 @@ class CarAppControllerIT {
 
     @Test
     fun when2GetByIdThenOK() {
+        // When
         val result = testRestTemplate.getForEntity("${baseApi}/${id}", Car::class.java)
 
+        // Then
         assertNotNull(result)
         assertEquals(HttpStatus.OK, result?.statusCode)
         assertEquals(15.0, result?.body?.mileage);
