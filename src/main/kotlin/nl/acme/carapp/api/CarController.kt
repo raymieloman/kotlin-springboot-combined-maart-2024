@@ -4,6 +4,7 @@ import jakarta.annotation.Resource
 import nl.acme.carapp.model.Car
 import nl.acme.carapp.service.CarService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.data.jpa.domain.AbstractPersistable_.id
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -19,6 +20,14 @@ import java.net.URI
 @RestController
 @RequestMapping("api/cars")
 class CarController(val service: CarService) {
+
+    @Value("\${spring.application.name}")
+    lateinit var name: String
+
+    @GetMapping("demo/properties")
+    fun showDemoReadingOrderPropertiesFiles() {
+        println(this.name)
+    }
 
     @PostMapping
     fun creatCar(@RequestBody car: Car): ResponseEntity<Car> {
