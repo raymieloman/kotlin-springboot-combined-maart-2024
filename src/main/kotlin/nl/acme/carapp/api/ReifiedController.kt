@@ -27,7 +27,7 @@ class ReifiedController(private val service: CarService) {
      * now, we can see ans ask for which type it is, that is impossible in Java
      * And you do not have supply the classType in het method signature
      */
-    private inline fun <reified  T> determineType(obj: Any): Any {
+    private inline fun <reified T> determineType(obj: Any): Any {
         if (obj is T) {
             println("Object is of type ${T::class.simpleName}")
         } else {
