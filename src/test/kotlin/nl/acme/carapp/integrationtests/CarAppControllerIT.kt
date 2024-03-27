@@ -62,9 +62,10 @@ class CarAppControllerIT {
 
     @Test
     fun when2GetByIdThenOK() {
-        val result = testRestTemplate.getForEntity("${baseApi}/${id}", Car::class.java);
+        val result = testRestTemplate.getForEntity("${baseApi}/${id}", Car::class.java)
 
         assertNotNull(result)
         assertEquals(HttpStatus.OK, result?.statusCode)
+        assertEquals(15.0, result?.body?.mileage);
     }
 }
