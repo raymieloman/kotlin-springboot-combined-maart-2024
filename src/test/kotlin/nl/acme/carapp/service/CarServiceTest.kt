@@ -12,8 +12,8 @@ import org.springframework.data.repository.findByIdOrNull
 class CarServiceTest {
 
 
-    val carRepository: CarRepository = mockk();
-    val carService = CarService(carRepository);
+    val carRepository: CarRepository = mockk() // mock
+    val carService = CarService(carRepository) // class under test
 
     var car: Car;
 
@@ -33,7 +33,7 @@ class CarServiceTest {
         val result = carService.findById(1)
 
         //then
-        verify(exactly = 1) { carRepository.findByIdOrNull(1) };
+        verify(exactly = 1) { carRepository.findByIdOrNull(1) }
         assertEquals(car, result)
     }
 }
