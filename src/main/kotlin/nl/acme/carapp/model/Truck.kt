@@ -6,8 +6,5 @@ import jakarta.persistence.Entity
 class Truck: Car() {
 
     open var name: String = "";
-
-    override fun type(): String {
-        return "truck"
-    }
+    override var type = "truck"
 }

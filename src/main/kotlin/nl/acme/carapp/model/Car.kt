@@ -12,12 +12,12 @@ open class Car: AbstractCar(){
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    var id: Long? = null
+    open var id: Long? = null
 
     @Column(nullable = false, length = 10)
-    var licensePlate: String? = null
+    open var licensePlate: String? = null
 
-    var mileage = 0.0
+    open var mileage = 0.0
 
-    override fun type() = "car"
+    override var type = "car"
 }
