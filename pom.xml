@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>nl.acme</groupId>
 	<artifactId>carapp</artifactId>
-	<version>0.1.0</version>
+	<version>0.2.0-SNAPSHOT</version>
 	<name>carapp</name>
 	<description>Demo project for Spring Boot with Cars</description>
 	<properties>
