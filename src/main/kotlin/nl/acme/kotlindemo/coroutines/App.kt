@@ -16,7 +16,7 @@ import java.time.LocalDateTime
 import kotlin.system.measureTimeMillis
 
 fun main() {
-//    baseDemo() // toggle this on and off
+      baseDemo() // toggle this on and off
 //    demoContext()
 //    demoRunBlocking() // toggle this on and off
 //    demoJobAndWaiting()
@@ -25,11 +25,11 @@ fun main() {
 //    demoJobAndCancellationAndKnowThatIAmCancelledImprovedWithCancellationException()
 //    demoJobWithTimeout()
 //    demoWithAsyncAwaitPrepareForCleanerCode()
-    demoWithAsyncAwait()
+//     demoWithAsyncAwait()
 
     // note to self: toggle this to show the result of the GlobalScope thread. Expect no result when no waiting here
     // this simulates a long running Android app
-    Thread.sleep(7000)
+    Thread.sleep(7000) // rloman refactor this to a wait for the job finishing
     // note to self: see the broken arrow on the left.
 }
 
@@ -81,9 +81,6 @@ fun demoRunBlocking() {
         println("End of runBlocking, seconds: ${LocalDateTime.now().second}") // increment should be 2 (5-3 seconds delay above)
     }
     println("After runBlocking, seconds: ${LocalDateTime.now().second}")
-    runBlocking {
-
-    }
 }
 
 fun demoJobAndWaiting() {
@@ -226,9 +223,8 @@ fun fib(n: Int): Long {
     else fib(n - 2) + fib(n - 1)
 }
 
-suspend fun networkCall1(): String {
-    delay(5000) // simulating a very expensive network call ...
-//    Thread.sleep(5000)
+suspend  fun networkCall1(): String {
+    delay(5000)
 
     return "Answer 1"
 }
