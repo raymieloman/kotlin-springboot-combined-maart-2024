@@ -1,5 +1,6 @@
 package nl.acme.carapp.api
 
+import nl.acme.carapp.model.AbstractCar
 import nl.acme.carapp.model.Car
 import nl.acme.carapp.model.Truck
 import nl.acme.carapp.service.CarService
@@ -15,9 +16,10 @@ import org.springframework.web.bind.annotation.RestController
 class ReifiedController(private val service: CarService) {
 
     @PostMapping
-    fun reifiedDemo(@RequestBody car: Car): Car {
+    fun reifiedDemo(@RequestBody car: AbstractCar): AbstractCar {
         var myCar = determineType(car)
-        return this.service.createCar(myCar)
+        return car;
+//        return this.service.createCar(myCar as)
     }
 
     /**
