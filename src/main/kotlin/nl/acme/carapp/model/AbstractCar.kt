@@ -13,5 +13,5 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo
     JsonSubTypes.Type(value = Truck::class, name = "truck")
 )
 abstract class AbstractCar {
-    abstract fun type(): String;
+    open var type: String = ""
 }
