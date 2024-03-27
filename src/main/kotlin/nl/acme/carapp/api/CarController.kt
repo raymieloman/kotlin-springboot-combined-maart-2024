@@ -27,7 +27,6 @@ class CarController(val service: CarService) {
     @GetMapping("demo/properties")
     fun showDemoReadingOrderPropertiesFiles() {
         println(this.name)
-
     }
 
     @PostMapping
