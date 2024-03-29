@@ -1,25 +1,21 @@
 package nl.acme.carapp.api
 
-import jakarta.annotation.Resource
 import nl.acme.carapp.model.Car
-import nl.acme.carapp.service.CarService
-import org.springframework.beans.factory.annotation.Autowired
+import nl.acme.carapp.model.Vehicle
+import nl.acme.carapp.service.VehicleService
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.data.jpa.domain.AbstractPersistable_.id
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestMethod
-import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
 import java.net.URI
 
 @RestController
-@RequestMapping("api/cars")
-class CarController(val service: CarService) {
+@RequestMapping("api/vehicles")
+class VehicleController(val service: VehicleService) {
 
     @Value("\${spring.application.name}")
     lateinit var name: String
@@ -30,25 +26,25 @@ class CarController(val service: CarService) {
     }
 
     @PostMapping
-    fun creatCar(@RequestBody car: Car): ResponseEntity<Car> {
-        val carCreated  = this.service.createCar(car)
+    fun createVehicle(@RequestBody vehicle: Vehicle): ResponseEntity<Vehicle> { // rloman refactor car to Vehicle
+        val vehicleCreated  = this.service.createVehicle(vehicle)
+//        val carDTO = CarDTO(carCreated.id, carCreated.licensePlate!!, carCreated.mileage)
 
-        return ResponseEntity.created(URI(carCreated.id.toString())).body(carCreated)
+        return ResponseEntity.created(URI(vehicleCreated.id.toString())).body(vehicle)
     }
 
     @GetMapping
-    fun getAllCars(): List<Car> {
-        return this.service.getAllCars()
+    fun getAllCars(): List<Vehicle> {
+        return this.service.getAllVehicles()
     }
 
     @GetMapping("{id}")
-    fun findById(@PathVariable id: Long): ResponseEntity<Car> {
-        val car = this.service.findById(id)
-        if (car == null) {
+    fun findById(@PathVariable id: Long): ResponseEntity<Vehicle> {
+        val vehicle = this.service.findById(id)
+        if (vehicle == null) {
             return ResponseEntity.notFound().build()
         } else {
-            return ResponseEntity.ok(car)
-
+            return ResponseEntity.ok(vehicle)
         }
     }
 

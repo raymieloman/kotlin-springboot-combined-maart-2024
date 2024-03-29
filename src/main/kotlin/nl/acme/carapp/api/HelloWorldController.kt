@@ -1,6 +1,5 @@
 package nl.acme.carapp.api
 
-import nl.acme.carapp.service.CarService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController

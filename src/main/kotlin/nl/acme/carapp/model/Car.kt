@@ -7,17 +7,14 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 
 @Entity
-open class Car: AbstractCar(){
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    open var id: Long? = null
+open class Car: Vehicle(){
 
     @Column(nullable = false, length = 10)
     open var licensePlate: String? = null
 
     open var mileage = 0.0
 
-    override var type = "car"
+    open override fun type() = "car"
+
+
 }

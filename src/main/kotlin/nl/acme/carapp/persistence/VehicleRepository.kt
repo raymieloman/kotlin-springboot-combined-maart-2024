@@ -1,12 +1,13 @@
 package nl.acme.carapp.persistence
 
 import nl.acme.carapp.model.Car
+import nl.acme.carapp.model.Vehicle
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
 
 @Repository
-interface CarRepository: JpaRepository<Car, Long> {
+interface VehicleRepository: JpaRepository<Vehicle, Long> {
 
     fun findByLicensePlate(licensePlate: String): List<Car>
 

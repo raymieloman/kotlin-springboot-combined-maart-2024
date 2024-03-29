@@ -4,16 +4,16 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import nl.acme.carapp.model.Car
-import nl.acme.carapp.persistence.CarRepository
+import nl.acme.carapp.persistence.VehicleRepository
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.springframework.data.repository.findByIdOrNull
 
-class CarServiceTest {
+class VehicleServiceTest {
 
 
-    val carRepository: CarRepository = mockk() // mock
-    val carService = CarService(carRepository) // class under test
+    val vehicleRepository: VehicleRepository = mockk() // mock
+    val vehicleService = VehicleService(vehicleRepository) // class under test
 
     var car: Car;
 
@@ -27,13 +27,13 @@ class CarServiceTest {
     fun testFindById() {
         
         //given
-        every { carRepository.findByIdOrNull(1) } returns car;
+        every { vehicleRepository.findByIdOrNull(1) } returns car;
 
         //when
-        val result = carService.findById(1)
+        val result = vehicleService.findById(1)
 
         //then
-        verify(exactly = 1) { carRepository.findByIdOrNull(1) }
+        verify(exactly = 1) { vehicleRepository.findByIdOrNull(1) }
         assertEquals(car, result)
     }
 }

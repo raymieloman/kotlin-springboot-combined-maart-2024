@@ -1,9 +1,7 @@
 package nl.acme.carapp.api
 
-import nl.acme.carapp.model.AbstractCar
-import nl.acme.carapp.model.Car
-import nl.acme.carapp.model.Truck
-import nl.acme.carapp.service.CarService
+import nl.acme.carapp.model.Vehicle
+import nl.acme.carapp.service.VehicleService
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -13,11 +11,11 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("api/reifieddemo")
 @Validated
-class ReifiedController(private val service: CarService) {
+class ReifiedController(private val service: VehicleService) {
 
     @PostMapping
-    fun reifiedDemo(@RequestBody car: AbstractCar): AbstractCar {
-        var myCar = determineType<AbstractCar>(car)
+    fun reifiedDemo(@RequestBody car: Vehicle): Vehicle {
+        var myCar = determineType<Vehicle>(car)
         return car;
 //        return this.service.createCar(myCar as)
     }
