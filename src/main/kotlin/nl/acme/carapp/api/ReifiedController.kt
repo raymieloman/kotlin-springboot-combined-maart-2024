@@ -15,9 +15,8 @@ class ReifiedController(private val service: VehicleService) {
 
     @PostMapping
     fun reifiedDemo(@RequestBody car: Vehicle): Vehicle {
-        var myCar = determineType<Vehicle>(car)
+        determineType<Vehicle>(car)
         return car;
-//        return this.service.createCar(myCar as)
     }
 
     /**

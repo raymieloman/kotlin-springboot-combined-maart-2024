@@ -9,8 +9,8 @@ import kotlin.jvm.optionals.getOrNull
 @Service
 class VehicleService(val repository: VehicleRepository) {
 
-    fun <T: Vehicle> getAllVehicles(): List<T> {
-        return this.repository.findAll() as List<T>
+    fun getAllVehicles(): MutableList<Vehicle> {
+        return this.repository.findAll()
     }
 
     @Transactional

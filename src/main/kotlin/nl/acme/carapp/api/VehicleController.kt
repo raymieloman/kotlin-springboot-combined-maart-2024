@@ -34,7 +34,7 @@ class VehicleController(val service: VehicleService) {
     }
 
     @GetMapping
-    fun getAllCars(): List<Vehicle> {
+    fun getAllCars(): MutableList<Vehicle> {
         return this.service.getAllVehicles()
     }
 
