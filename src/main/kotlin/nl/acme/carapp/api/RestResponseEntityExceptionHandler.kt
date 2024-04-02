@@ -2,6 +2,7 @@ package nl.acme.carapp.api
 
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
+import org.springframework.http.HttpStatusCode
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.MissingPathVariableException
 import org.springframework.web.bind.annotation.ControllerAdvice
@@ -35,15 +36,15 @@ class RestResponseEntityExceptionHandler: ResponseEntityExceptionHandler() {
         )
     }
 
-    @ExceptionHandler(value = [MissingPathVariableException::class])
-    protected fun handleExceptionRunTime(
-        ex: MissingPathVariableException?, request: WebRequest?
-    ): ResponseEntity<Any?>? {
-        val bodyOfResponse = "This entity does not exist!"
-        return handleExceptionInternal(
-            ex!!, bodyOfResponse,
-            HttpHeaders(), HttpStatus.CONFLICT, request!!
-        )
+    override fun handleMissingPathVariable(
+        ex: MissingPathVariableException,
+        headers: HttpHeaders,
+        status: HttpStatusCode,
+        request: WebRequest
+    ): ResponseEntity<Any>? {
+        println("Ik zit in de child class")
+
+        return super.handleMissingPathVariable(ex, headers, status, request)
     }
 }
 
