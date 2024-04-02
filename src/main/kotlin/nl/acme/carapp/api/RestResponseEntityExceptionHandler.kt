@@ -47,7 +47,11 @@ class RestResponseEntityExceptionHandler: ResponseEntityExceptionHandler() {
     ): ResponseEntity<Any>? {
         println("Ik zit in de child class")
 
-        return super.handleMissingPathVariable(ex, headers, HttpStatus.NOT_FOUND, request)
+        // return a custom one
+        return handleExceptionInternal(
+            ex!!, "The id is missing",
+            HttpHeaders(), HttpStatus.NOT_FOUND, request!!
+        )
     }
 }
 
