@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.context.request.WebRequest
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
 
-
 @ControllerAdvice
 class RestResponseEntityExceptionHandler: ResponseEntityExceptionHandler() {
 
+    // This introduces a new method
+    // The exception type is NOT ALLOWED to be in the parent class his method: handleException in the @ExceptionHandler list
     @ExceptionHandler(value = [IllegalArgumentException::class, IllegalStateException::class])
     protected fun handleConflict(
         ex: RuntimeException?, request: WebRequest?
@@ -25,17 +26,19 @@ class RestResponseEntityExceptionHandler: ResponseEntityExceptionHandler() {
         )
     }
 
+    // This also introduces a new method
     @ExceptionHandler(value = [NullPointerException::class])
     protected fun handleExceptionNPE(
         ex: java.lang.NullPointerException?, request: WebRequest?
     ): ResponseEntity<Any?>? {
-        val bodyOfResponse = "This entity does not exist!"
+        val bodyOfResponse = "A NPE occurred, and that even in Kotlin!"
         return handleExceptionInternal(
             ex!!, bodyOfResponse,
-            HttpHeaders(), HttpStatus.CONFLICT, request!!
+            HttpHeaders(), HttpStatus.SERVICE_UNAVAILABLE, request!!
         )
     }
 
+    // This overrides the base method, look carefully how it is invoked in the parent class.
     override fun handleMissingPathVariable(
         ex: MissingPathVariableException,
         headers: HttpHeaders,
@@ -44,7 +47,7 @@ class RestResponseEntityExceptionHandler: ResponseEntityExceptionHandler() {
     ): ResponseEntity<Any>? {
         println("Ik zit in de child class")
 
-        return super.handleMissingPathVariable(ex, headers, status, request)
+        return super.handleMissingPathVariable(ex, headers, HttpStatus.NOT_FOUND, request)
     }
 }
 
