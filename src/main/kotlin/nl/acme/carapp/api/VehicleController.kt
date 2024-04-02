@@ -4,6 +4,7 @@ import nl.acme.carapp.model.Car
 import nl.acme.carapp.model.Vehicle
 import nl.acme.carapp.service.VehicleService
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.data.jpa.domain.AbstractPersistable_.id
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -26,7 +27,8 @@ class VehicleController(val service: VehicleService) {
     }
 
     @PostMapping
-    fun createVehicle(@RequestBody vehicle: Vehicle): ResponseEntity<Vehicle> { // rloman refactor car to Vehicle
+    fun createVehicle(@RequestBody vehicle: Vehicle): ResponseEntity<Vehicle> {
+        throw NullPointerException()
         val vehicleCreated  = this.service.createVehicle(vehicle)
 //        val carDTO = CarDTO(carCreated.id, carCreated.licensePlate!!, carCreated.mileage)
 
@@ -39,14 +41,7 @@ class VehicleController(val service: VehicleService) {
     }
 
     @GetMapping("{id}")
-    fun findById(@PathVariable id: Long): ResponseEntity<Vehicle> {
-        val vehicle = this.service.findById(id)
-        if (vehicle == null) {
-            return ResponseEntity.notFound().build()
-        } else {
-            return ResponseEntity.ok(vehicle)
-        }
-    }
+    fun findById(@PathVariable id: Vehicle) = id
 
     @GetMapping("mileage/{mileage}")
     fun findByMileage(@PathVariable mileage: Double) = this.service.findByMileage(mileage)
