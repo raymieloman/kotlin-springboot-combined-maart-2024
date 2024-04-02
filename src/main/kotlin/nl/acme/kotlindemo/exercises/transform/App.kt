@@ -1,6 +1,6 @@
-package nl.acme.carapp.exercises.transform
+package nl.acme.kotlindemo.exercises.transform
 
-import nl.acme.carapp.utils.Assert.Companion.assertEquals
+import nl.acme.kotlindemo.utils.Assert.Companion.assertEquals
 
 data class Book(val title: String, val author: String, val publicationYear: Int)
 

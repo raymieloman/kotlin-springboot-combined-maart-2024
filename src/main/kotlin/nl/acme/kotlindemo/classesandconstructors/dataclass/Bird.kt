@@ -1,6 +1,6 @@
 package nl.acme.kotlindemo.classesandconstructors.dataclass
 
-import nl.acme.carapp.utils.Assert.Companion.assertEquals
+import nl.acme.kotlindemo.utils.Assert.Companion.assertEquals
 
 open class Animal
 

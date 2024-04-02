@@ -1,6 +1,6 @@
 package nl.acme.kotlindemo.extensionfunctions
 
-import nl.acme.carapp.utils.countVowels
+import nl.acme.kotlindemo.utils.countVowels
 
 fun main() {
     val text = "Hello, Kotlin"

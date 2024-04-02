@@ -1,6 +1,6 @@
 package nl.acme.kotlindemo.scopefunctionsdemo
 
-import nl.acme.carapp.utils.Assert.Companion.assertEquals
+import nl.acme.kotlindemo.utils.Assert.Companion.assertEquals
 import kotlin.math.sqrt
 
 data class Car(val licensePlate: String, var mileage: Int = 0)

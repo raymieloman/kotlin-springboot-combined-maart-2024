@@ -1,6 +1,6 @@
-package nl.acme.carapp.kotlindemo.generics
+package nl.acme.kotlindemo.generics
 
-import nl.acme.carapp.utils.Assert.Companion.assertEquals
+import nl.acme.kotlindemo.utils.Assert.Companion.assertEquals
 
 // PECS ::= Producer extends(out), Consumer super (in)
 

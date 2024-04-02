@@ -1,6 +1,6 @@
-package nl.acme.carapp.exercises.extentionfunctions
+package nl.acme.kotlindemo.exercises.extentionfunctions
 
-import nl.acme.carapp.utils.Assert.Companion.assertEquals
+import nl.acme.kotlindemo.utils.Assert.Companion.assertEquals
 
 
 fun main() {

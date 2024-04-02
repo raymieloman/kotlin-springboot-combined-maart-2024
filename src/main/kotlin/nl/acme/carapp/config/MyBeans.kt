@@ -1,7 +1,7 @@
 package nl.acme.carapp.config
 
 import nl.acme.carapp.model.Car
-import nl.acme.carapp.utils.CarOwner
+import nl.acme.carapp.model.CarOwner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 

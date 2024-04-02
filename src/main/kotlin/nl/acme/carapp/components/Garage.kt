@@ -2,7 +2,7 @@ package nl.acme.carapp.components
 
 import jakarta.annotation.PostConstruct
 import nl.acme.carapp.config.Employee
-import nl.acme.carapp.utils.Assert
+import nl.acme.kotlindemo.utils.Assert
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Component
 

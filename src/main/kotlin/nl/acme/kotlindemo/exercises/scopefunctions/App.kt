@@ -1,4 +1,4 @@
-package nl.acme.carapp.exercises.scopefunctions
+package nl.acme.kotlindemo.exercises.scopefunctions
 
 data class User(val id: Long, val name: String, var email: String?)
 
