@@ -25,8 +25,19 @@ class RestResponseEntityExceptionHandler: ResponseEntityExceptionHandler() {
     }
 
     @ExceptionHandler(value = [NullPointerException::class])
-    protected fun handleExceptionRunTime(
+    protected fun handleExceptionNPE(
         ex: java.lang.NullPointerException?, request: WebRequest?
+    ): ResponseEntity<Any?>? {
+        val bodyOfResponse = "This entity does not exist!"
+        return handleExceptionInternal(
+            ex!!, bodyOfResponse,
+            HttpHeaders(), HttpStatus.CONFLICT, request!!
+        )
+    }
+
+    @ExceptionHandler(value = [MissingPathVariableException::class])
+    protected fun handleExceptionRunTime(
+        ex: MissingPathVariableException?, request: WebRequest?
     ): ResponseEntity<Any?>? {
         val bodyOfResponse = "This entity does not exist!"
         return handleExceptionInternal(
