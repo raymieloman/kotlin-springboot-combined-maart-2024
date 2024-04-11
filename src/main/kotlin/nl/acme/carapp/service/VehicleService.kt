@@ -2,7 +2,7 @@ package nl.acme.carapp.service
 
 import jakarta.transaction.Transactional
 import nl.acme.carapp.model.Vehicle
-import nl.acme.carapp.persistence.VehicleRepository
+import nl.acme.carapp.dao.VehicleRepository
 import org.springframework.stereotype.Service
 import kotlin.jvm.optionals.getOrNull
 
@@ -17,4 +17,8 @@ class VehicleService(val repository: VehicleRepository) {
     fun createVehicle(vehicle: Vehicle) = this.repository.save(vehicle)
     fun findById(id: Long): Vehicle? = this.repository.findById(id).getOrNull()
     fun findByMileage(mileage: Double) = this.repository.findByMileageCustomQueryNative(mileage)
+    @Transactional
+    fun update(vehicle: Vehicle) = this.repository.save(vehicle)
+    @Transactional
+    fun deleteById(id: Long) = this.repository.deleteById(id)
 }

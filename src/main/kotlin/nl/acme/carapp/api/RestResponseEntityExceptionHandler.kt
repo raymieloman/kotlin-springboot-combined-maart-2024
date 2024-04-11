@@ -49,8 +49,8 @@ class RestResponseEntityExceptionHandler: ResponseEntityExceptionHandler() {
 
         // return a custom one
         return handleExceptionInternal(
-            ex!!, "The id is missing",
-            HttpHeaders(), HttpStatus.NOT_FOUND, request!!
+            ex, "The id is missing",
+            HttpHeaders(), HttpStatus.NOT_FOUND, request
         )
     }
 }

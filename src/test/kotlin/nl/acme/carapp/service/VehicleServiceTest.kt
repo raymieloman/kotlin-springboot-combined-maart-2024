@@ -4,7 +4,7 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import nl.acme.carapp.model.Car
-import nl.acme.carapp.persistence.VehicleRepository
+import nl.acme.carapp.dao.VehicleRepository
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.springframework.data.repository.findByIdOrNull

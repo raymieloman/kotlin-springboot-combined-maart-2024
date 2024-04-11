@@ -1,4 +1,4 @@
-package nl.acme.carapp.persistence
+package nl.acme.carapp.dao
 
 import nl.acme.carapp.model.Car
 import nl.acme.carapp.model.Vehicle
